@@ -2,51 +2,29 @@ require 'spec_helper'
 
 describe "Static Pages" do
   
-  describe "Home page" do
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Sample App')
-    end
+  subject { page }
 
-    it "should have the right title" do
-      visit '/static_pages/home'
-      page.should have_selector('title', :text => 'Ruby on Rails Sample App')
-    end
+  describe "Home page" do
+    before { visit root_path }
+    it { should have_selector('h1', :text => 'Sample App') }
+    it { should have_selector('title', text: full_title('')) }
   end
 
   describe "Help page" do
-    it "should have the content 'Help'" do
-      visit '/static_pages/help'
-      page.should have_content('Help')
-    end
-
-    it "should have the right title" do
-      visit '/static_pages/help'
-      page.should have_selector('title', :text => 'Ruby on Rails Sample App | Help')
-    end
+    before { visit help_path }
+    it { should have_content('Help') }
+    it { should have_selector('title', :text => full_title('Help')) }
   end
 
   describe "About page" do
-    it "should have the content 'About us'" do
-      visit '/static_pages/about'
-      page.should have_content('About us')
-    end
-
-    it "should have the right title" do
-      visit '/static_pages/about'
-      page.should have_selector('title', :text => 'Ruby on Rails Sample App | About us')
-    end
+    before { visit about_path }
+    it { should have_content('About us') }
+    it { should have_selector('title', :text => full_title('About us')) }
   end
 
   describe "Contact page" do
-    it "should have the content 'Contact'" do
-      visit '/static_pages/contact'
-      page.should have_content('Contact')
-    end
-
-    it "should have the right title" do
-      visit '/static_pages/contact'
-      page.should have_selector('title', :text => 'Ruby on Rails Sample App | Contact us')
-    end
+    before { visit contact_path }
+    it { should have_content('Contact') }
+    it { should have_selector('title', :text => full_title('Contact us')) }
   end
 end
