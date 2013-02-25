@@ -7,7 +7,7 @@ describe ApplicationHelper do
     end
 
     it "should include the base title" do
-      full_title('foo').should =~ /^Ruby on Rails Sample App/
+      full_title('foo').should =~ /^#{application_name}/
     end
   end
 end
