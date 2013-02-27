@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def feed
-    # This is a proto-feed
     Micropost.from_users_followed_by(self)
   end
 
